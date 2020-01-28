@@ -1,0 +1,25 @@
+var URL = "http://sci-hub.tw/";
+
+/*
+
+// Firefox always has both chrome and browser objects, Chrome has only chrome
+var browser = browser || chrome
+
+function openSciHubTab(tab) {
+    if ( tab.active ){
+        browser.tabs.create({
+            url: baseURL + tab.url,
+            index: tab.index + 1
+        });
+    }
+}
+*/
+
+function toSciHub(tab) {
+    browser.tabs.create({
+        url: URL + tab.url,
+        index: tab.index + 1
+ });
+}
+
+browser.browserAction.onClicked.addListener(function(new_tab) { toSciHub(new_tab) });
